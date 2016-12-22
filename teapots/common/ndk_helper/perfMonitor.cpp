@@ -19,8 +19,10 @@
 namespace ndk_helper {
 
 PerfMonitor::PerfMonitor()
-    : tv_last_sec_(0), last_tick_(0.f), tickindex_(0), ticksum_(0) {
-  for (int32_t i = 0; i < NUM_SAMPLES; ++i) ticklist_[i] = 0;
+    : current_FPS_(0), tv_last_sec_(0), last_tick_(0.f), tickindex_(0),
+      ticksum_(0) {
+  for (int32_t i = 0; i < NUM_SAMPLES; ++i)
+    ticklist_[i] = 0;
 }
 
 PerfMonitor::~PerfMonitor() {}
