@@ -57,6 +57,10 @@ LOCAL_SRC_FILES := $(JNI_SRC_PATH)/hello-jni.c
 ...
 ```
 
+### Output
+
+All `.so` output are described in the `/other-builds/ndkbuild/hello-jni/app/.externalNativeBuild/ndkBuild/release`.
+
 
 License
 -------
