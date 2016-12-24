@@ -5,15 +5,15 @@ The origin README, please move to : https://github.com/googlesamples/android-ndk
 
 ---
 
-### Sample try: hello-jni
+## I. Sample try: hello-jni
 
-Simple to running it in Android Studio, just "Open" project on the  `other-builds/ndkbuild/hello-jni`.
+Simple to running it in Android Studio, just "Open" project on the  `/other-builds/ndkbuild/hello-jni`.
 
-#### Architecture:
+### Architecture:
 
-As you can see there are only `Android.mk` and `Application.mk` implmentation on the `other-builds/ndkbuild/hello-jni`, and others(`java`、`cpp`、etc) are all in the `hello-jni`, which is declared in the following files:
+As you can see there are only `Android.mk` and `Application.mk` implmentation on the folder: `/other-builds/ndkbuild/hello-jni`, and others(`java`、`cpp`、etc) are all on the foler: `/hello-jni`, which is declared in the following files:
 
-##### [other-builds/ndkbuild/hello-jni/app/build.gradle](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/build.gradle):
+#### 1. [/other-builds/ndkbuild/hello-jni/app/build.gradle](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/build.gradle):
 
 ```groovy
 apply plugin: 'com.android.application'
@@ -43,7 +43,7 @@ android {
 
 ```
 
-[other-builds/ndkbuild/hello-jni/app/Android.mk](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/Android.mk):
+#### 2. [/other-builds/ndkbuild/hello-jni/app/Android.mk](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/Android.mk):
 
 ```groovy
 ...
