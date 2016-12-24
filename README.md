@@ -1,37 +1,62 @@
 NDK Samples [![Build Status](https://travis-ci.org/googlesamples/android-ndk.svg?branch=master)](https://travis-ci.org/googlesamples/android-ndk) [![Build status](https://ci.appveyor.com/api/projects/status/48tbtqwg4heytmnq?svg=true)](https://ci.appveyor.com/project/proppy/android-ndk)
 ===========
 
-This repository contains [Android NDK][0] samples with Android Studio [C++ integration](https://www.youtube.com/watch?v=f7ihSQ44WO0&feature=youtu.be).
+The origin README, please move to : https://github.com/googlesamples/android-ndk
 
-These samples uses the new [CMake Android plugin](http://tools.android.com/tech-docs/external-c-builds) with C++ support.
+---
 
-Additional Android Studio samples:    
-- [Google Play Game Samples with Android Studio](https://github.com/playgameservices/cpp-android-basic-samples)
-- [Google Android Vulkan Tutorials](https://github.com/googlesamples/android-vulkan-tutorials)
-- [Android Vulkan API Basic Samples](https://github.com/googlesamples/vulkan-basic-samples)
-- [Android High Performance Audio](https://github.com/googlesamples/android-audio-high-performance)	
+### Sample try: hello-jni
 
-Known Issues
-- Some are documented at [Android Studio](http://tools.android.com/knownissues) page
-- For native application, editing some gradle properties [like sdk version] from Android Studio UI is not supported
+Simple to running it in Android Studio, just "Open" project on the  `other-builds/ndkbuild/hello-jni`.
 
-For samples using `Android.mk` build system with `ndk-build` see the [android-mk](https://github.com/googlesamples/android-ndk/tree/android-mk) branch.
+#### Architecture:
 
-Build Steps
-----------
-- With Android Studio: use "Import Project(Eclipse ADT, Gradle, etc)" or "File" > "Import Projec"t option
-- On Command Line/Terminal:  make sure set up ANDROID_HOME and ANDROID_NDK_HOME to local installation of SDK and NDK, then go to individual sample dir, and use "gradlew assembleDebug"
- 
-Support
--------
+As you can see there are only `Android.mk` and `Application.mk` implmentation on the `other-builds/ndkbuild/hello-jni`, and others(`java`、`cpp`、etc) are all in the `hello-jni`, which is declared in the following files:
 
-- [Google+ Community](https://plus.google.com/communities/105153134372062985968)
-- [Stack Overflow](http://stackoverflow.com/questions/tagged/android)
+##### [other-builds/ndkbuild/hello-jni/app/build.gradle](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/build.gradle):
 
-If you've found an error in these samples, please [file an issue](https://github.com/googlesamples/android-ndk/issues/new).
+```groovy
+apply plugin: 'com.android.application'
 
-Patches and new samples are encouraged, and may be submitted by [forking this project](https://github.com/googlesamples/android-ndk/fork) and
-submitting a pull request through GitHub. Please see [CONTRIBUTING.md](CONTRIBUTING.md) for more details.
+// pointing to cmake's source code for the same project
+def REMOTE_PROJ_ROOT = '../../../../' + rootProject.getName() + '/' +
+                        project.getName() + '/src/main'
+android {
+  ...
+
+    externalNativeBuild {
+        ndkBuild {
+            path 'Android.mk'
+        }
+    }
+    sourceSets {
+        main {
+            manifest.srcFile "${REMOTE_PROJ_ROOT}/AndroidManifest.xml"
+            java.srcDirs = ["${REMOTE_PROJ_ROOT}/java"]
+            res.srcDirs = ["${REMOTE_PROJ_ROOT}/res"]
+        }
+    }
+
+    ...
+}
+...
+
+```
+
+[other-builds/ndkbuild/hello-jni/app/Android.mk](https://github.com/Jacksgong/android-ndk/blob/master/other-builds/ndkbuild/hello-jni/app/Android.mk):
+
+```groovy
+...
+
+JNI_SRC_PATH := $(LOCAL_PATH)/../../../../hello-jni/app/src/main/cpp
+
+...
+
+LOCAL_SRC_FILES := $(JNI_SRC_PATH)/hello-jni.c
+
+...
+```
+
 
 License
 -------
