@@ -7,7 +7,7 @@ The origin README, please move to : https://github.com/googlesamples/android-ndk
 
 ## I. Sample try: hello-jni
 
-Simple to running it in Android Studio, just "Open" project on the  `/other-builds/ndkbuild/hello-jni`.
+Simple to run it in Android Studio, just "Open" project on the  `/other-builds/ndkbuild/hello-jni`.
 
 ### Architecture:
 
@@ -60,6 +60,14 @@ LOCAL_SRC_FILES := $(JNI_SRC_PATH)/hello-jni.c
 ### Output
 
 All `.so` output are described in the `/other-builds/ndkbuild/hello-jni/app/.externalNativeBuild/ndkBuild/release`.
+
+## II. Reference prebuilt libraries: hello-libs
+
+> There is a basic knowledge post: [Using Prebuilt Libraries](https://developer.android.com/ndk/guides/prebuilts.html)
+
+In the hello-libs, it reference `libgmath.a` and `libgperf.so`.
+
+The project architecture is similar to the Architecture for hello-jni. so you just try to run it in Android Studio through "Open" the project on the foloder:  `/other-builds/ndkbuild/hello-libs`.
 
 
 License
