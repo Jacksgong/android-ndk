@@ -67,7 +67,7 @@ All `.so` output are described in the `/other-builds/ndkbuild/hello-jni/app/.ext
 
 In the hello-libs, it reference `libgmath.a` and `libgperf.so`.
 
-The project architecture is similar to the Architecture for hello-jni. so you just try to run it in Android Studio through "Open" the project on the foloder:  `/other-builds/ndkbuild/hello-libs`.
+The project architecture is similar to [the architecture for hello-jni](https://github.com/Jacksgong/android-ndk#i-sample-try-hello-jni). so you just try to run it in Android Studio through "Open" the project on the foloder:  `/other-builds/ndkbuild/hello-libs`.
 
 
 License
